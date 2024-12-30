@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Student Detail{% endblock %}
+{% block content %}
+    <h2>Student Detail</h2>
+    <p><strong>First Name:</strong> {{ object.first_name }}</p>
+    <p><strong>Last Name:</strong> {{ object.last_name }}</p>
+    <p><strong>Email:</strong> {{ object.email }}</p>
+    <p><strong>Phone Number:</strong> {{ object.phone_number }}</p>
+    <p><strong>Address:</strong> {{ object.address }}</p>
+    <p><strong>Sex:</strong> {{ object.sex }}</p>
+    <a href="{% url 'student_update' object.pk %}">Edit</a>
+    <form method="post" action="{% url 'student_delete' object.pk %}">
+        {% csrf_token %}
+        <button type="submit">Delete</button>
+    </form>
+{% endblock %}
